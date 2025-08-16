@@ -10,8 +10,6 @@ QEMU/KVM Virtualization Setup Guide
 
 .. contents:: Table of Contents
    :depth: 2
-   :local:
-   :backlinks: top
 
 QEMU (short for Quick Emulator) is a free and open source virtualization and emulation software. KVM is a virtualization layer built into Linux, which comes with many benefits like near instant performance and better networking support.
 

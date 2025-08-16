@@ -10,8 +10,6 @@ Understanding Monero: Privacy-Focused Cryptocurrency
 
 .. contents:: Table of Contents
    :depth: 2
-   :local:
-   :backlinks: top
 
 What is Monero?
 ===============

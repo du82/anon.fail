@@ -1,4 +1,5 @@
 .. include:: ../header.rst
+.. include:: ../footer.rst
 
 ========================================
 Set up a Tor hidden service with Apache2
@@ -10,14 +11,12 @@ Set up a Tor hidden service with Apache2
 
 .. contents:: Table of Contents
    :depth: 2
-   :local:
-   :backlinks: top
 
 Prerequisites
 =============
 
 - A **Debian-based** Linux distribution (**NOT Ubuntu**)
-- 2GB of memory recommended, 500MB minimum. 1GB disk space
+- 2GB of memory recommended, 500MB minimum. 1GB disk space recommended.
 - Root access
 
 Step 1: Install Required Packages

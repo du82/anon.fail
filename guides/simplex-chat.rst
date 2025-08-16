@@ -10,8 +10,6 @@ Secure your comms with SimpleX Chat
 
 .. contents:: Table of Contents
    :depth: 2
-   :local:
-   :backlinks: top
 
 What is SimpleX Chat?
 =====================

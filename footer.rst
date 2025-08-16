@@ -3,10 +3,10 @@
 
    Attention: this is not a standalone document.
 
-.. header::
+.. footer::
    ANON.FAIL: Homepage__ | News__ [ Guides: Tor__ | `Hidden Service`__ | KVM__ | Monero__ | SimpleX__ ] [ Dangers: KYC__ ]
 
-   __ /
+   __ /index.html
    __ /news.html
    __ /guides/tor.html
    __ /guides/hidden-service.html
