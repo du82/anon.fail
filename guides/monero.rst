@@ -26,17 +26,12 @@ How can I get some?
 
 There are several methods to acquire Monero, each with different privacy and convenience trade-offs. Understanding these options helps you choose the approach that best fits your needs and threat model.
 
-Through an Exchange
--------------------
-.. Warning:: Purchasing crypto through an exchange exposes your personal information (ID, credit card) to a centralized exchange, you should prefer `Peer-to-peer trading`__!
-
-The most straightforward method involves purchasing cryptocurrency through a Know Your Customer (KYC) exchange, then swapping it for Monero through a privacy-focused exchange service. While this method requires initial identity verification, it provides a reliable on-ramp for beginners.
-
-Start by purchasing Bitcoin, Litecoin, or another widely-supported cryptocurrency from a regulated exchange like Coinbase, Kraken, or Binance. These platforms require identity verification but offer the convenience of direct fiat-to-crypto conversion through bank transfers or credit cards. Once you have the base cryptocurrency, you can convert it to Monero using privacy-focused services.
-
-Services like Trocador, ChangeNOW, or FixedFloat allow you to swap other cryptocurrencies for Monero without requiring personal information. These auto-swap services generate temporary addresses for the exchange, automatically converting your Bitcoin or other coins to Monero and sending them to your wallet. While the initial purchase through a KYC exchange creates a paper trail, the subsequent swap to Monero can in some cases break the chain of on-chain analysis.
-
-After acquiring Monero through this method, transfer it immediately to your own Monero wallet rather than leaving it on any exchange. This ensures you control your private keys and maintains the privacy benefits that Monero provides.
+======================  ============  ==========
+Mining on your machine  P2P Trading   Exchange
+======================  ============  ==========
+Maximum privacy         Good privacy  It depends
+Difficult + costly      Simple, but less private
+======================  ========================
 
 Peer-to-Peer Trading
 --------------------
@@ -48,6 +43,18 @@ Local meetups and privacy-focused communities often facilitate in-person Monero 
 Online peer-to-peer platforms like LocalMonero (now discontinued) previously facilitated private trades, but similar services continue to emerge. These platforms connect buyers and sellers while providing escrow services to reduce counterparty risk. When using any P2P platform, research the reputation system and start with small transactions until you build trust with regular trading partners.
 
 Friends and family members who already use Monero can provide another avenue for private acquisition. If someone you trust holds Monero, you can arrange to purchase directly from them using cash, bank transfer, or other mutually agreeable payment methods. This approach leverages existing relationships and avoids the risks associated with trading with strangers.
+
+Through an Exchange
+-------------------
+.. Warning:: Purchasing crypto through an exchange exposes your personal information (ID, credit card) to a centralized exchange, you should prefer `Peer-to-peer trading`__!
+
+The most straightforward method involves purchasing cryptocurrency through a Know Your Customer (KYC) exchange, then swapping it for Monero through a privacy-focused exchange service. While this method requires initial identity verification, it provides a reliable on-ramp for beginners.
+
+Start by purchasing Bitcoin, Litecoin, or another widely-supported cryptocurrency from a regulated exchange like Coinbase, Kraken, or Binance. These platforms require identity verification but offer the convenience of direct fiat-to-crypto conversion through bank transfers or credit cards. Once you have the base cryptocurrency, you can convert it to Monero using privacy-focused services.
+
+Services like Trocador, ChangeNOW, or FixedFloat allow you to swap other cryptocurrencies for Monero without requiring personal information. These auto-swap services generate temporary addresses for the exchange, automatically converting your Bitcoin or other coins to Monero and sending them to your wallet. While the initial purchase through a KYC exchange creates a paper trail, the subsequent swap to Monero can in some cases break the chain of on-chain analysis.
+
+After acquiring Monero through this method, transfer it immediately to your own Monero wallet rather than leaving it on any exchange. This ensures you control your private keys and maintains the privacy benefits that Monero provides.
 
 Mining Monero
 -------------
