@@ -1,4 +1,5 @@
 .. include:: ../header.rst
+.. include:: ../footer.rst
 
 ===================================
 Secure your comms with SimpleX Chat
@@ -15,3 +16,7 @@ What is SimpleX Chat?
 =====================
 SimpleX Chat is a messaging app which does not require any personally identifiable information.
 The only thing you need to provide is a display name, which can be as vague as ``anon`` or even ``a``.
+
+Get started with SimpleX Chat
+=============================
+You can download SimpleX Chat from

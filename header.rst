@@ -4,7 +4,7 @@
    Attention: this is not a standalone document.
 
 .. header::
-   ANON.FAIL: Homepage__ | News__ [ Guides: Tor__ | `Hidden Service`__ | KVM__ | Monero__ | SimpleX__ ] [ Dangers: KYC__ ]
+   [ anon.fail: Homepage__ | News__ ] [ Guides: Tor__ | `Hidden Service`__ | KVM__ | Monero__ | SimpleX__ ] [ Dangers: KYC__ ]
 
    __ /
    __ /news.html

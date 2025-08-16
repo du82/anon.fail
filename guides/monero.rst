@@ -1,4 +1,5 @@
 .. include:: ../header.rst
+.. include:: ../footer.rst
 
 ====================================================
 Understanding Monero: Privacy-Focused Cryptocurrency

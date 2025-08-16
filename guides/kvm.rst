@@ -1,4 +1,5 @@
 .. include:: ../header.rst
+.. include:: ../footer.rst
 
 ========================================
 QEMU/KVM Virtualization Setup Guide
