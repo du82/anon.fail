@@ -8,9 +8,9 @@
 
    __ index.html
    __ news.html
-   __ guides/tor.html
-   __ guides/hidden-service.html
-   __ guides/kvm.html
-   __ guides/monero.html
-   __ guides/simplex-chat.html
-   __ dangers/kyc.html
+   __ /guides/tor.html
+   __ /guides/hidden-service.html
+   __ /guides/kvm.html
+   __ /guides/monero.html
+   __ /guides/simplex-chat.html
+   __ /dangers/kyc.html
