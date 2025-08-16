@@ -6,8 +6,8 @@
 .. header::
    ANON.FAIL: Homepage__ | News__ [ Guides: Tor__ | `Hidden Service`__ | KVM__ | Monero__ | SimpleX__ ] [ Dangers: KYC__ ]
 
-   __ index.html
-   __ news.html
+   __ /index.html
+   __ /news.html
    __ /guides/tor.html
    __ /guides/hidden-service.html
    __ /guides/kvm.html
