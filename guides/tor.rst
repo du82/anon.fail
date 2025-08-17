@@ -179,11 +179,25 @@ Getting Started Safely
 Basic Security Guidelines
 --------------------------
 
-1. **Use Tor Browser** instead of configuring other browsers
-2. **Keep software updated** to latest versions
-3. **Disable JavaScript** for maximum security
-4. **Never download files** through Tor Browser
-5. **Don't log into personal accounts** while using Tor
+1. **Use Tor Browser instead of configuring other browsers**
+
+  The Tor Browser is specifically designed to work with the Tor network and includes essential privacy protections that are difficult to replicate in other browsers. Standard browsers like Firefox or Chrome leak identifying information through WebRTC, browser fingerprinting, and various tracking mechanisms even when configured to use Tor as a proxy. Download the official Tor Browser from ``torproject.org`` only - never use unofficial versions or browser extensions that claim to provide Tor functionality. The Tor Browser automatically routes all traffic through the Tor network, blocks dangerous plugins, and resets your session when closed.
+
+2. **Keep software updated to latest versions**
+
+  Tor Browser receives frequent security updates that patch vulnerabilities and improve privacy protections. Enable automatic updates in the Tor Browser settings, or manually check for updates by clicking the hamburger menu and selecting "About Tor Browser." Always restart the browser when prompted after updates. Similarly, keep your operating system updated with the latest security patches, as system-level vulnerabilities can compromise your anonymity even when using Tor properly.
+
+3. **Disable JavaScript for maximum security**
+
+  JavaScript can be used to fingerprint your browser, exploit security vulnerabilities, and potentially reveal your real IP address through various attack techniques. In Tor Browser, click the shield icon in the address bar and select "Advanced Security Settings," then choose "Safest" to disable JavaScript entirely. While this breaks some websites' functionality, it provides the strongest protection against browser-based attacks. For essential sites that require JavaScript, consider using a separate browsing session or different security level, understanding that this reduces your anonymity.
+
+4. **Never download files through Tor Browser**
+
+  Downloaded files can contain malware, tracking beacons, or other code that executes outside the Tor Browser's protection. Many file types like PDFs, Word documents, and executables can "phone home" to reveal your real IP address when opened. If you must download files, save them to an isolated system or virtual machine that's disconnected from the internet. Use antivirus scanning and consider the security implications of any file you download through Tor, as it may have been specifically crafted to de-anonymize users.
+
+5. **Don't log into personal accounts while using Tor**
+
+  Logging into accounts tied to your real identity defeats the purpose of using Tor for anonymity. Services like Gmail, Facebook, or banking sites that know your identity can correlate your Tor usage with your real identity, potentially exposing your browsing patterns. If you must access personal accounts, do so through your regular browser on a separate device or in a completely separate browsing session. Create separate, anonymous accounts for any services you need to access through Tor, using different passwords and recovery methods that don't tie back to your real identity.
 
 Advanced Security Practices
 ----------------------------

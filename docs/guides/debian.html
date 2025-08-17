@@ -5,7 +5,7 @@
 <meta name="generator" content="Docutils 0.20.1: https://docutils.sourceforge.io/" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="dcterms.rights" content="This document has been placed in the public domain." />
-<title>Set up a Tor hidden service with Apache2</title>
+<title>An Introduction to Debian</title>
 <link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
 <style type="text/css">
 
@@ -833,18 +833,18 @@ dl.field-list > dt > .colon {
 
 </style>
 </head>
-<body class="with-toc">
+<body>
 <header>
 <p>[ anon.fail: <a class="reference external" href="/">Homepage</a> | <a class="reference external" href="/news.html">News</a> ] [ Guides: <a class="reference external" href="/guides/tor.html">Tor</a> | <a class="reference external" href="/guides/hidden-service.html">Hidden Service</a> | <a class="reference external" href="/guides/kvm.html">KVM</a> | <a class="reference external" href="/guides/monero.html">Monero</a> | <a class="reference external" href="/guides/simplex-chat.html">SimpleX</a> ] [ Dangers: <a class="reference external" href="/dangers/kyc.html">KYC</a> ]</p>
 </header>
-<main id="set-up-a-tor-hidden-service-with-apache2">
-<h1 class="title">Set up a Tor hidden service with Apache2</h1>
+<main id="an-introduction-to-debian">
+<h1 class="title">An Introduction to Debian</h1>
 <dl class="docinfo simple">
 <dt class="description">Description<span class="colon">:</span></dt>
-<dd class="description"><p>This guide walks through the process of setting up a Tor hidden service (.onion site) using Apache2 on Debian-based systems.</p>
+<dd class="description"><p>This guide is a basic introduction to Debian Linux from a non-technical perspective.</p>
 </dd>
 <dt class="reviewed">Reviewed<span class="colon">:</span></dt>
-<dd class="reviewed"><p>This document was last reviewed on 8/16/2025.</p>
+<dd class="reviewed"><p>This document was last reviewed on 8/17/2025.</p>
 </dd>
 <dt class="copyright">Copyright<span class="colon">:</span></dt>
 <dd class="copyright">This document has been placed in the public domain.</dd>
@@ -857,245 +857,7 @@ Attention: this is not a standalone document. -->
 in ``docutils/docs/*/`` sub-sub-diretories.
 
 Attention: this is not a standalone document. -->
-<nav class="contents" id="table-of-contents" role="doc-toc">
-<p class="topic-title">Table of Contents</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#what-is-a-tor-hidden-service" id="toc-entry-1">What is a Tor Hidden Service?</a></p></li>
-<li><p><a class="reference internal" href="#prerequisites" id="toc-entry-2">Prerequisites</a></p></li>
-<li><p><a class="reference internal" href="#step-1-install-required-packages" id="toc-entry-3">Step 1: Install Required Packages</a></p></li>
-<li><p><a class="reference internal" href="#step-2-add-the-tor-project-repository" id="toc-entry-4">Step 2: Add the Tor Project Repository</a></p></li>
-<li><p><a class="reference internal" href="#step-3-add-the-tor-gpg-key" id="toc-entry-5">Step 3: Add the Tor GPG Key</a></p></li>
-<li><p><a class="reference internal" href="#step-4-install-and-start-tor" id="toc-entry-6">Step 4: Install and Start Tor</a></p></li>
-<li><p><a class="reference internal" href="#step-5-configure-the-hidden-service" id="toc-entry-7">Step 5: Configure the Hidden Service</a></p></li>
-<li><p><a class="reference internal" href="#step-6-set-permissions-and-restart-tor" id="toc-entry-8">Step 6: Set Permissions and Restart Tor</a></p></li>
-<li><p><a class="reference internal" href="#step-7-configure-apache-for-the-hidden-service" id="toc-entry-9">Step 7: Configure Apache for the Hidden Service</a></p></li>
-<li><p><a class="reference internal" href="#step-8-configure-apache-to-listen-on-the-right-port" id="toc-entry-10">Step 8: Configure Apache to Listen on the Right Port</a></p></li>
-<li><p><a class="reference internal" href="#step-9-create-a-virtual-host-for-your-hidden-service" id="toc-entry-11">Step 9: Create a Virtual Host for your Hidden Service</a></p></li>
-<li><p><a class="reference internal" href="#step-10-enable-the-site-and-restart-apache" id="toc-entry-12">Step 10: Enable the Site and Restart Apache</a></p></li>
-<li><p><a class="reference internal" href="#step-11-verify-your-hidden-service" id="toc-entry-13">Step 11: Verify Your Hidden Service</a></p></li>
-<li><p><a class="reference internal" href="#vanity-onion-addresses" id="toc-entry-14">Vanity .onion Addresses</a></p>
-<ul>
-<li><p><a class="reference internal" href="#generate-a-vanity-address" id="toc-entry-15">Generate a Vanity Address</a></p></li>
-<li><p><a class="reference internal" href="#configure-the-vanity-address-for-your-tor-hidden-service" id="toc-entry-16">Configure the Vanity Address for your Tor Hidden Service</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#troubleshooting" id="toc-entry-17">Troubleshooting</a></p>
-<ul>
-<li><p><a class="reference internal" href="#add-servername-to-apache-config" id="toc-entry-18">Add ServerName to Apache config</a></p></li>
-<li><p><a class="reference internal" href="#reset-everything" id="toc-entry-19">Reset Everything</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#security-considerations" id="toc-entry-20">Security Considerations</a></p></li>
-<li><p><a class="reference internal" href="#additional-resources" id="toc-entry-21">Additional Resources</a></p></li>
-</ul>
-</nav>
-<section id="what-is-a-tor-hidden-service">
-<h2><a class="toc-backref" href="#toc-entry-1" role="doc-backlink">What is a Tor Hidden Service?</a></h2>
-<p>A Tor hidden service, also known as an onion service, is a website or server that exists entirely within the Tor network and can only be accessed through the Tor browser. Unlike traditional websites that have public IP addresses, hidden services use special <span class="docutils literal">.onion</span> addresses that look like random strings of letters and numbers. Both the server hosting the hidden service and clients accessing it remain completely anonymous - neither party knows the other's real IP address or location. The connection never leaves the Tor network, providing end-to-end anonymity and making the service resistant to censorship, surveillance, and takedown attempts.</p>
-</section>
-<section id="prerequisites">
-<h2><a class="toc-backref" href="#toc-entry-2" role="doc-backlink">Prerequisites</a></h2>
-<ul class="simple">
-<li><p>Knowledge of Debian (<a class="reference external" href="/guides/debian.html">read this guide</a>)</p></li>
-<li><p>A <strong>Debian-based</strong> Linux distribution (<strong>NOT Ubuntu</strong>)</p></li>
-<li><p>2GB of memory recommended, 500MB minimum. 1GB disk space recommended.</p></li>
-<li><p>Root access</p></li>
-</ul>
-</section>
-<section id="step-1-install-required-packages">
-<h2><a class="toc-backref" href="#toc-entry-3" role="doc-backlink">Step 1: Install Required Packages</a></h2>
-<p>Start by acquiring root privileges and installing the necessary packages:</p>
-<pre class="literal-block"># Become root
-su
-
-# Install Tor and Apache2
-sudo apt install tor -y
-sudo apt install apache2 -y
-sudo apt install apt-transport-https -y</pre>
-</section>
-<section id="step-2-add-the-tor-project-repository">
-<h2><a class="toc-backref" href="#toc-entry-4" role="doc-backlink">Step 2: Add the Tor Project Repository</a></h2>
-<p>Add the official Tor Project repository to ensure you get the latest version:</p>
-<pre class="literal-block"># Create a new list file for Tor repositories
-cd /etc/apt/sources.list.d/
-sudo touch tor.list
-sudo nano tor.list</pre>
-<p>In the editor, paste the following (don't exit yet):</p>
-<pre class="literal-block">deb     [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org tor-experimental-&lt;DISTRIBUTION&gt; main
-deb-src [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org tor-experimental-&lt;DISTRIBUTION&gt; main</pre>
-<p>You need to replace <span class="docutils literal">&lt;DISTRIBUTION&gt;</span> with your actual distribution codename:</p>
-<pre class="literal-block"># Open a new terminal tab and run:
-lsb_release -c</pre>
-<p>Replace <span class="docutils literal">&lt;DISTRIBUTION&gt;</span> in tor.list with whatever codename appears (e.g., noble, wilma, bookworm). Save and close the file.</p>
-</section>
-<section id="step-3-add-the-tor-gpg-key">
-<h2><a class="toc-backref" href="#toc-entry-5" role="doc-backlink">Step 3: Add the Tor GPG Key</a></h2>
-<p>Add the Tor Project's GPG key to verify packages:</p>
-<pre class="literal-block">sudo bash -c &quot;wget -q0- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | tee /usr/share/keyrings/deb.torproject.org-keyring.gpg &gt;/dev/null&quot;</pre>
-</section>
-<section id="step-4-install-and-start-tor">
-<h2><a class="toc-backref" href="#toc-entry-6" role="doc-backlink">Step 4: Install and Start Tor</a></h2>
-<p>Update the package list and install Tor with the official keyring:</p>
-<pre class="literal-block">sudo apt update
-sudo apt install tor deb.torproject.org-keyring
-sudo systemctl start tor
-sudo systemctl status tor  # Verify Tor is running</pre>
-</section>
-<section id="step-5-configure-the-hidden-service">
-<h2><a class="toc-backref" href="#toc-entry-7" role="doc-backlink">Step 5: Configure the Hidden Service</a></h2>
-<p>Create the directory for your hidden service and configure Tor:</p>
-<pre class="literal-block">sudo mkdir /var/lib/tor/hidden_service
-cd /etc/tor
-sudo nano torrc</pre>
-<p>Add these lines to the torrc file:</p>
-<pre class="literal-block">HiddenServiceDir /var/lib/tor/hidden_service
-HiddenServicePort 80 127.0.0.1:8080</pre>
-<p><strong>Note:</strong> Be careful with the syntax - ensure there's no colon after &quot;HiddenServiceDir&quot; and &quot;HiddenServicePort&quot;</p>
-</section>
-<section id="step-6-set-permissions-and-restart-tor">
-<h2><a class="toc-backref" href="#toc-entry-8" role="doc-backlink">Step 6: Set Permissions and Restart Tor</a></h2>
-<p>Set the correct ownership and permissions for the hidden service directory:</p>
-<pre class="literal-block">sudo chown -R debian-tor:debian-tor /var/lib/tor/hidden_service
-sudo chmod -R 700 /var/lib/tor/hidden_service
-sudo systemctl restart tor</pre>
-</section>
-<section id="step-7-configure-apache-for-the-hidden-service">
-<h2><a class="toc-backref" href="#toc-entry-9" role="doc-backlink">Step 7: Configure Apache for the Hidden Service</a></h2>
-<p>Create a directory for your hidden service content:</p>
-<pre class="literal-block">sudo mkdir -p /var/www/hidden_service/
-sudo touch /var/www/hidden_service/index.html</pre>
-<p>Edit the index.html file with your content:</p>
-<pre class="literal-block">sudo nano /var/www/hidden_service/index.html</pre>
-<p>Retrieve your .onion address:</p>
-<pre class="literal-block">sudo cat /var/lib/tor/hidden_service/hostname</pre>
-</section>
-<section id="step-8-configure-apache-to-listen-on-the-right-port">
-<h2><a class="toc-backref" href="#toc-entry-10" role="doc-backlink">Step 8: Configure Apache to Listen on the Right Port</a></h2>
-<p>Modify Apache's ports configuration:</p>
-<pre class="literal-block">cd /etc/apache2/
-sudo nano ports.conf</pre>
-<p>Add this line (or modify existing Listen directives):</p>
-<pre class="literal-block">Listen 127.0.0.1:8080</pre>
-</section>
-<section id="step-9-create-a-virtual-host-for-your-hidden-service">
-<h2><a class="toc-backref" href="#toc-entry-11" role="doc-backlink">Step 9: Create a Virtual Host for your Hidden Service</a></h2>
-<p>Create and configure a virtual host file:</p>
-<pre class="literal-block">cd /etc/apache2/sites-available/
-sudo touch hidden_service.conf
-sudo nano hidden_service.conf</pre>
-<p>Add this configuration, replacing &quot;address.onion&quot; with your actual .onion address:</p>
-<pre class="literal-block">&lt;VirtualHost 127.0.0.1:8080&gt;
-    ServerName address.onion
-    DocumentRoot /var/www/hidden_service
-&lt;/VirtualHost&gt;</pre>
-</section>
-<section id="step-10-enable-the-site-and-restart-apache">
-<h2><a class="toc-backref" href="#toc-entry-12" role="doc-backlink">Step 10: Enable the Site and Restart Apache</a></h2>
-<p>Set the proper permissions, enable the site, and restart Apache:</p>
-<pre class="literal-block">sudo chown root:root /etc/apache2/sites-available/hidden_service.conf
-sudo chmod 644 /etc/apache2/sites-available/hidden_service.conf
-sudo a2ensite hidden_service.conf
-sudo systemctl reload apache2</pre>
-</section>
-<section id="step-11-verify-your-hidden-service">
-<h2><a class="toc-backref" href="#toc-entry-13" role="doc-backlink">Step 11: Verify Your Hidden Service</a></h2>
-<p>Check your .onion address again and test your site:</p>
-<pre class="literal-block">sudo cat /var/lib/tor/hidden_service/hostname</pre>
-<p>To access your hidden service, you'll need the Tor Browser. Enter your .onion address in the Tor Browser to verify it's working.</p>
-</section>
-<hr class="docutils" />
-<section id="vanity-onion-addresses">
-<h2><a class="toc-backref" href="#toc-entry-14" role="doc-backlink">Vanity .onion Addresses</a></h2>
-<p><strong>Note:</strong> You may want to generate the vanity address on a separate more powerful machine and move it over with SSH. Instructions for both methods are included.</p>
-<section id="generate-a-vanity-address">
-<h3><a class="toc-backref" href="#toc-entry-15" role="doc-backlink">Generate a Vanity Address</a></h3>
-<pre class="literal-block"># mkp224o Setup
-git clone https://github.com/cathugger/mkp224o
-cd mkp224o
-./autogen.sh
-./configure
-make
-
-# Generate a vanity address
-./mkp244o [character string you want]</pre>
-<aside class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It is recommend only running <span class="docutils literal">./mkp244o</span> with 1-6 characters. Expect long wait times. Anything longer than 7 characters may never generate on most hardware available to consumers.</p>
-</aside>
-<p>Generated Tor addresses will end up in a file in your documents called <span class="docutils literal">mkp224o</span>, and inside you will find <span class="docutils literal">hostname</span>, <span class="docutils literal">hs_ed25519_public_key</span>, and <span class="docutils literal">hs_ed25519_secret_key</span>.</p>
-</section>
-<section id="configure-the-vanity-address-for-your-tor-hidden-service">
-<h3><a class="toc-backref" href="#toc-entry-16" role="doc-backlink">Configure the Vanity Address for your Tor Hidden Service</a></h3>
-<pre class="literal-block"># Move generated address credentials
-mv /mkp224o/vanity-address-folder /var/lib/tor/
-
-# Remove old credentials
-cd /var/lib/tor/hidden_service/
-rm -rf hostname
-rm -rf hs_ed25519_public_key
-rm -rf hs_ed25519_secret_key
-
-# Add new credentials
-cd /var/lib/tor/vanity-address-folder
-mv hostname /var/lib/tor/hidden_service
-mv hs_ed25519_public_key /var/lib/tor/hidden_service
-mv hs_ed25519_secret_key /var/lib/tor/hidden_service
-cd ..
-rm -rf /vanity-address-folder
-
-# Set Permissions
-cd /var/lib/tor/hidden_service/
-sudo chown debian-tor:debian-tor hostname hs_ed25519_public_key hs_ed25519_secret_key
-chmod 600 hs_ed25519_secret_key
-chmod 644 hostname hs_ed25519_public_key
-
-systemctl restart tor</pre>
-</section>
-</section>
-<hr class="docutils" />
-<section id="troubleshooting">
-<h2><a class="toc-backref" href="#toc-entry-17" role="doc-backlink">Troubleshooting</a></h2>
-<p>If you encounter issues:</p>
-<section id="add-servername-to-apache-config">
-<h3><a class="toc-backref" href="#toc-entry-18" role="doc-backlink">Add ServerName to Apache config</a></h3>
-<pre class="literal-block">sudo nano /etc/apache2/apache2.conf
-# Add: ServerName localhost
-sudo reboot</pre>
-</section>
-<section id="reset-everything">
-<h3><a class="toc-backref" href="#toc-entry-19" role="doc-backlink">Reset Everything</a></h3>
-<p>If problems persist, try resetting the services:</p>
-<pre class="literal-block"># Reset Tor service
-sudo chown -R debian-tor:debian-tor /var/lib/tor/hidden_service
-sudo pkill tor
-sudo systemctl stop tor
-sudo -u debian-tor tor -f /etc/tor/torrc
-
-# Check Apache configuration
-apache2 -S
-
-# If needed, reinstall Apache
-sudo apt-get remove --purge apache2 apache2-data apache2-utils -y
-sudo apt-get install apache2 -y
-# Then repeat the Apache configuration steps</pre>
-</section>
-</section>
-<section id="security-considerations">
-<h2><a class="toc-backref" href="#toc-entry-20" role="doc-backlink">Security Considerations</a></h2>
-<ul class="simple">
-<li><p>This is a basic setup for educational purposes</p></li>
-<li><p>For production environments, implement additional security measures</p></li>
-<li><p>Regularly update your system and the Tor service</p></li>
-<li><p>Consider hardening your Apache configuration</p></li>
-</ul>
-</section>
-<section id="additional-resources">
-<h2><a class="toc-backref" href="#toc-entry-21" role="doc-backlink">Additional Resources</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://community.torproject.org/onion-services/">Tor Project Documentation</a></p></li>
-<li><p><a class="reference external" href="https://httpd.apache.org/docs/">Apache HTTP Server Documentation</a></p></li>
-</ul>
-</section>
+<p>WIP</p>
 </main>
 <footer>
 <p>[ anon.fail ] Generated by <a class="reference external" href="https://docutils.sourceforge.io/">Docutils</a> from <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> source.</p>

@@ -12,9 +12,15 @@ Set up a Tor hidden service with Apache2
 .. contents:: Table of Contents
    :depth: 2
 
+What is a Tor Hidden Service?
+=============================
+
+A Tor hidden service, also known as an onion service, is a website or server that exists entirely within the Tor network and can only be accessed through the Tor browser. Unlike traditional websites that have public IP addresses, hidden services use special ``.onion`` addresses that look like random strings of letters and numbers. Both the server hosting the hidden service and clients accessing it remain completely anonymous - neither party knows the other's real IP address or location. The connection never leaves the Tor network, providing end-to-end anonymity and making the service resistant to censorship, surveillance, and takedown attempts.
+
 Prerequisites
 =============
 
+- Knowledge of Debian (`read this guide`__)
 - A **Debian-based** Linux distribution (**NOT Ubuntu**)
 - 2GB of memory recommended, 500MB minimum. 1GB disk space recommended.
 - Root access
@@ -264,3 +270,5 @@ Additional Resources
 
 - `Tor Project Documentation <https://community.torproject.org/onion-services/>`_
 - `Apache HTTP Server Documentation <https://httpd.apache.org/docs/>`_
+
+__ /guides/debian.html
