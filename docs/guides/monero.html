@@ -869,7 +869,8 @@ Attention: this is not a standalone document. -->
 </ul>
 </li>
 <li><p><a class="reference internal" href="#official-monero-gui-wallet" id="toc-entry-6">Official Monero GUI Wallet</a></p></li>
-<li><p><a class="reference internal" href="#additional-resources" id="toc-entry-7">Additional Resources</a></p></li>
+<li><p><a class="reference internal" href="#reducing-traceability" id="toc-entry-7">Reducing Traceability</a></p></li>
+<li><p><a class="reference internal" href="#additional-resources" id="toc-entry-8">Additional Resources</a></p></li>
 </ul>
 </nav>
 <section id="what-is-monero">
@@ -930,8 +931,55 @@ Attention: this is not a standalone document. -->
 <p>The GUI wallet includes an integrated node that synchronizes with the Monero network, though this initial sync can take several hours depending on your internet connection. For faster setup, you can optionally connect to a remote node, though this reduces privacy slightly since the remote node operator could potentially log which blocks you're requesting.</p>
 <p>Once synchronized, the wallet provides a user-friendly interface for sending and receiving Monero while maintaining full privacy. The built-in address book helps you manage frequently-used addresses, and the wallet automatically handles all the cryptographic operations needed for private transactions.</p>
 </section>
+<section id="reducing-traceability">
+<h2><a class="toc-backref" href="#toc-entry-7" role="doc-backlink">Reducing Traceability</a></h2>
+<p>By routing Monero through multiple intermediate wallets, you can exponentially reduce transaction traceability. Create temporary wallets and send coins through them sequentially - from your main wallet to wallet A, then A to wallet B, then B to the recipient. Each additional hop multiplies the possible transaction paths, dropping the probability of successful tracing from 6.25% for direct transactions to 0.39% with one intermediate wallet and 0.0244% with two.</p>
+<table>
+<thead>
+<tr><th class="head"><p>Passes</p></th>
+<th class="head"><p>Possible
+Outcomes</p></th>
+<th class="head"><p>Probability</p></th>
+</tr>
+</thead>
+<tbody>
+<tr><td><p>1</p></td>
+<td><p>16</p></td>
+<td><p>6.25%</p></td>
+</tr>
+<tr><td><p>2</p></td>
+<td><p>256</p></td>
+<td><p>0.39%</p></td>
+</tr>
+<tr><td><p>3</p></td>
+<td><p>4,096</p></td>
+<td><p>0.0244%</p></td>
+</tr>
+<tr><td><p>4</p></td>
+<td><p>65,536</p></td>
+<td><p>0.00153%</p></td>
+</tr>
+<tr><td><p>5</p></td>
+<td><p>1,048,576</p></td>
+<td><p>0.0000954%</p></td>
+</tr>
+<tr><td><p>6</p></td>
+<td><p>16,777,216</p></td>
+<td><p>0.00000596%</p></td>
+</tr>
+<tr><td><p>7</p></td>
+<td><p>268,435,456</p></td>
+<td><p>0.000000373%</p></td>
+</tr>
+<tr><td><p>8</p></td>
+<td><p>4,294,967,296</p></td>
+<td><p>0.0000000233%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="additional-resources">
-<h2><a class="toc-backref" href="#toc-entry-7" role="doc-backlink">Additional Resources</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-8" role="doc-backlink">Additional Resources</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.getmonero.org/">Official Monero Website</a></p></li>
 <li><p><a class="reference external" href="https://web.getmonero.org/resources/research-lab/">Monero Research Lab Papers</a></p></li>

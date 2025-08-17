@@ -76,6 +76,31 @@ The GUI wallet includes an integrated node that synchronizes with the Monero net
 
 Once synchronized, the wallet provides a user-friendly interface for sending and receiving Monero while maintaining full privacy. The built-in address book helps you manage frequently-used addresses, and the wallet automatically handles all the cryptographic operations needed for private transactions.
 
+Reducing Traceability
+=====================
+
+By routing Monero through multiple intermediate wallets, you can exponentially reduce transaction traceability. Create temporary wallets and send coins through them sequentially - from your main wallet to wallet A, then A to wallet B, then B to the recipient. Each additional hop multiplies the possible transaction paths, dropping the probability of successful tracing from 6.25% for direct transactions to 0.39% with one intermediate wallet and 0.0244% with two.
+
++-------+---------------+---------------+
+| Passes| Possible      | Probability   |
+|       | Outcomes      |               |
++=======+===============+===============+
+| 1     | 16            | 6.25%         |
++-------+---------------+---------------+
+| 2     | 256           | 0.39%         |
++-------+---------------+---------------+
+| 3     | 4,096         | 0.0244%       |
++-------+---------------+---------------+
+| 4     | 65,536        | 0.00153%      |
++-------+---------------+---------------+
+| 5     | 1,048,576     | 0.0000954%    |
++-------+---------------+---------------+
+| 6     | 16,777,216    | 0.00000596%   |
++-------+---------------+---------------+
+| 7     | 268,435,456   | 0.000000373%  |
++-------+---------------+---------------+
+| 8     | 4,294,967,296 | 0.0000000233% |
++-------+---------------+---------------+
 
 Additional Resources
 ====================
